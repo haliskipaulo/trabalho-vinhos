@@ -1,6 +1,15 @@
 import numpy as np
 import pandas as pd
 
+
+numEpocas = 100     # Número de épocas.
+tamanho = pd.read_csv('winequality-red.csv')
+q = len(tamanho)  # Número de amostras
+
+eta = 0.01            # Taxa de aprendizado
+
+# Dados
+
 FixedAcidity = pd.read_csv('winequality-red.csv', usecols=[0], skiprows=1)
 FixedAcidity = np.array(FixedAcidity)
 FixedAcidity = np.transpose(FixedAcidity)
@@ -49,7 +58,15 @@ Quality = pd.read_csv('winequality-red.csv', usecols=[11], skiprows=1)
 Quality = np.array(Quality)
 Quality = np.transpose(Quality)
 
+# Bias
+bias = 1
+
 # Entrada do perceptron
 X = np.vstack((FixedAcidity, VolatileAcidity, CitricAcid, ResidualSugar, 
                Chlorides, FreeSulfurDioxide, TotalSulfurDioxide, Density, 
                pH, Sulphates, Alcohol, Quality))
+
+
+# ===============================================================
+# TREINAMENTO.
+# ===============================================================
